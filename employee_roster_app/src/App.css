@@ -119,3 +119,12 @@ img {
    padding: 10px 10px;
 }
 
+.modal-columns { 
+  display: flex; 
+  justify-content: space-between; 
+} 
+.column { 
+  flex: 1; 
+  padding: 0 10px;
+}
+
