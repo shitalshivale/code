@@ -5,6 +5,7 @@ import EmployeeTableComponent from './Components/EmployeeTableComponent';
 import Pagination from './Components/PaginationComponent';
 import EmpModalCardComponent from './Components/EmpModalCardComponent';
 import { fetchEmployees } from './Redux/employeeReducer';
+import { COMPANY_ESTABLISH_DATE, COMPANY_MOTO,COMPANY_NAME } from './constant';
 
 function App() {
   const dispatch = useDispatch();
@@ -54,7 +55,14 @@ function App() {
   
   return (
     <div className="App">
-      <h1>Infosys Ltd.</h1>
+      <div className='company-details'>
+        <h1>{COMPANY_NAME}</h1>
+        <h4> {COMPANY_MOTO}</h4>
+        <h4>
+          {COMPANY_ESTABLISH_DATE}
+        </h4>
+      </div>
+      <hr/>
       <div className="search-container">
         <input
           type="text"
@@ -67,7 +75,7 @@ function App() {
       <EmployeeTableComponent employees={employeeData} currentPage={currentPage} employeesPerPage={employeesPerPage} openModal={openModal} />
       <Pagination currentPage={currentPage} totalPages={totalPages} handlePageChange={handlePageChange} />
       {isModalOpen && (
-        <EmpModalCardComponent employee={selectedEmployee} onClose={closeModal} />
+        <EmpModalCardComponent employee={selectedEmployee} onClose={closeModal} isOpen={isModalOpen} />
       )}
     </div>
   );
