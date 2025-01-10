@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import CloseIcon from '@mui/icons-material/Close';
+
 
 const EmpModalCardComponent = ({employee,onClose,isOpen}) =>{
     const modalRef = useRef();
@@ -30,12 +30,18 @@ const EmpModalCardComponent = ({employee,onClose,isOpen}) =>{
                    +
                 </span>
                 <h2>
-                    {employee.empName}
+                <img
+                    src={"/" + employee.empPhoto}
+                    alt=''
+                    height="30"
+                    width="30" 
+                />
+                    {employee.empName} {employee.empLastName}
                 </h2>
                 <p>Job Title:{employee.jobTitle}</p>
                 <p>Job Description: {employee.jobDescription}</p>
                 <p>Age: {employee.empAge}</p>
-                <p>Date if Joining: {employee.dateOfJoining}</p>
+                <p>Date of Joining: {employee.dateOfJoining}</p>
             </div>
         </div>
     );
