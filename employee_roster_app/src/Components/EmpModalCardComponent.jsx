@@ -1,11 +1,12 @@
 import React  from "react";
+import CloseIcon from '@mui/icons-material/Close';
 
 const EmpModalCardComponent = ({employee,onClose}) =>{
     return(
         <div className="modal-card" onClose={onClose}>
             <div className="modal-content" onClick={(e)=>e.stopPropagation()}>
                 <span className="close-icon" onClick={onClose}>
-                    &times
+                   +
                 </span>
                 <h2>
                     {employee.empName}

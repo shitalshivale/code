@@ -5,8 +5,6 @@ const EmployeeTableComponent = ({ employees, currentPage, employeesPerPage, open
   const startIndex = (currentPage - 1) * employeesPerPage;
   const endIndex = startIndex + employeesPerPage;
 
-  console.log("-----startIndex", startIndex);
-  console.log("-----end", endIndex);
   const paginatedEmployees = employees && employees.slice(startIndex, endIndex);
   
   if (!paginatedEmployees) {
