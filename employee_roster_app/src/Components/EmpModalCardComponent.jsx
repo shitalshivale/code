@@ -33,8 +33,8 @@ const EmpModalCardComponent = ({employee,onClose,isOpen}) =>{
                             <img 
                                 src={"/" + employee.empPhoto} 
                                 alt='' 
-                                height="30" 
-                                width="30" 
+                                height="100" 
+                                width="100" 
                             /> 
                            
                         </h2> 
