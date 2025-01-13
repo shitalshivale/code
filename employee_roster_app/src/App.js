@@ -35,7 +35,9 @@ function App() {
   //handle search for particulat employee
   const handleSearch =()=>{
     const searched = employeeData.filter((employee)=>
-      employee.empName.toLowerCase().includes(searchQuery.toLowerCase())
+      Object.values(employee).some((value) => 
+        value.toString().toLowerCase().includes(searchQuery.toLowerCase())
+      )
     );
     setCurrentPage(1);
 
