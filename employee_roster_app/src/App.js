@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
+import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import EmployeeTableComponent from './Components/EmployeeTableComponent'; 
 import Pagination from './Components/PaginationComponent';
@@ -29,7 +30,18 @@ function App() {
 
   //fetch all employee data whenever dispatched function invoked
   useEffect(()=>{
-    dispatch(fetchEmployees());
+    const fetchEmployees = async () =>{
+      try { 
+        const response = await axios.get('sample-data.json'); 
+        dispatch({ 
+          type: 'SET_EMPLOYEES', 
+          data: response.data, 
+        }); 
+      } catch (error) { 
+        console.error('Error fetching employees:', error); 
+      } 
+    }
+    fetchEmployees();
   }, dispatch)
 
   //handle search for particulat employee
