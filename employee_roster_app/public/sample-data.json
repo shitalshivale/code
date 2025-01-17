@@ -9,7 +9,7 @@
           "jobTitle": "Analyst",
           "dateOfJoining": "2023-10-23",
           "jobDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "empPhoto": "profile_dummy_img.jpeg"
+          "empPhoto": "./profile_dummy_img.jpg"
         },
         {
           "id": 2,
@@ -21,7 +21,7 @@
           "jobTitle": "Tester",
           "dateOfJoining": "2023-08-24",
           "jobDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "empPhoto": "profile_dummy_img.jpeg"
+          "empPhoto": "./profile_dummy_img.jpg"
         },
         {
           "id": 3,
@@ -33,7 +33,7 @@
           "jobTitle": "Executive",
           "dateOfJoining": "2023-08-28",
           "jobDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "empPhoto": "profile_dummy_img.jpeg"
+          "empPhoto": "./profile_dummy_img.jpg"
         },
         {
           "id": 4,
@@ -45,7 +45,7 @@
           "jobTitle": "Manager",
           "dateOfJoining": "2023-10-10",
           "jobDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "empPhoto": "profile_dummy_img.jpeg"
+          "empPhoto": "./profile_dummy_img.jpg"
         },
         {
           "id": 5,
@@ -57,7 +57,7 @@
           "jobTitle": "Dev Ops",
           "dateOfJoining": "2023-07-23",
           "jobDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "empPhoto": "profile_dummy_img.jpeg"
+          "empPhoto": "./profile_dummy_img.jpg"
         },
         {
           "id": 6,
@@ -69,7 +69,7 @@
           "jobTitle": "Tech Analyst",
           "dateOfJoining": "2023-09-30",
           "jobDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "empPhoto": "profile_dummy_img.jpeg"
+          "empPhoto": "./profile_dummy_img.jpg"
         },
         {
           "id": 7,
@@ -81,7 +81,7 @@
           "jobTitle": "Analyst",
           "dateOfJoining": "2023-09-03",
           "jobDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "empPhoto": "profile_dummy_img.jpeg"
+          "empPhoto": "./profile_dummy_img.jpg"
         },
         {
           "id": 8,
@@ -93,7 +93,7 @@
           "jobTitle": "Manager",
           "dateOfJoining": "2023-07-24",
           "jobDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "empPhoto": "profile_dummy_img.jpeg"
+          "empPhoto": "./profile_dummy_img.jpg"
         },
         {
           "id": 9,
@@ -105,7 +105,7 @@
           "jobTitle": "Tech Analyst",
           "dateOfJoining": "2023-08-29",
           "jobDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "empPhoto": "profile_dummy_img.jpeg"
+          "empPhoto": "./profile_dummy_img.jpg"
         },
         {
           "id": 10,
@@ -117,7 +117,7 @@
           "jobTitle": "Manager",
           "dateOfJoining": "2023-08-28",
           "jobDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "empPhoto": "profile_dummy_img.jpeg"
+          "empPhoto": "./profile_dummy_img.jpg"
         },
         {
           "id": 11,
@@ -129,6 +129,6 @@
           "jobTitle": "Tech Analyst",
           "dateOfJoining": "2023-08-05",
           "jobDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "empPhoto": "profile_dummy_img.jpeg"
+          "empPhoto": "./profile_dummy_img.jpg"
         }
     ]

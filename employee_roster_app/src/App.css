@@ -126,4 +126,12 @@ img {
   flex: 1; 
   padding: 0 10px;
 }
+.company-subdetails{
+  display: flex;
+  justify-content: space-between;
+}
+
+.company-subdetails h4{
+ margin: 0px
+}
 

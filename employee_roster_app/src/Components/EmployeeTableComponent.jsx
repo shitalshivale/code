@@ -31,7 +31,7 @@ const EmployeeTableComponent = ({ employees, currentPage, employeesPerPage, open
                 <td>{employee.id}</td>
                 <td>
                   <img
-                    src={"/" + employee.empPhoto}
+                    src={employee.empPhoto}
                     alt=''
                     height="30"
                     width="30" />

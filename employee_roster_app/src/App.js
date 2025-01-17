@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import EmployeeTableComponent from './Components/EmployeeTableComponent'; 
 import Pagination from './Components/PaginationComponent';
 import EmpModalCardComponent from './Components/EmpModalCardComponent';
-import { fetchEmployees } from './Redux/employeeReducer';
 import { COMPANY_ESTABLISH_DATE, COMPANY_MOTO,COMPANY_NAME } from './constant';
+import {fetchEmployeePending,searchEmployee} from './Redux/employeeAction';
 
 function App() {
   const dispatch = useDispatch();
@@ -30,33 +29,15 @@ function App() {
 
   //fetch all employee data whenever dispatched function invoked
   useEffect(()=>{
-    const fetchEmployees = async () =>{
-      try { 
-        const response = await axios.get('sample-data.json'); 
-        dispatch({ 
-          type: 'SET_EMPLOYEES', 
-          data: response.data, 
-        }); 
-      } catch (error) { 
-        console.error('Error fetching employees:', error); 
-      } 
-    }
-    fetchEmployees();
-  }, dispatch)
+   if(!searchQuery){
+    dispatch(fetchEmployeePending());
+   }
+  }, [searchQuery])
 
   //handle search for particulat employee
   const handleSearch =()=>{
-    const searched = employeeData.filter((employee)=>
-      Object.values(employee).some((value) => 
-        value.toString().toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    );
+    dispatch(searchEmployee(searchQuery));
     setCurrentPage(1);
-
-    dispatch({
-      type: 'SET_EMPLOYEES',
-      data: searched
-    })
   }
 
   //handle previous and next page
@@ -71,10 +52,12 @@ function App() {
     <div className="App">
       <div className='company-details'>
         <h1>{COMPANY_NAME}</h1>
-        <h4> {COMPANY_MOTO}</h4>
-        <h4>
-          {COMPANY_ESTABLISH_DATE}
-        </h4>
+        <div className='company-subdetails'>
+          <h4> {COMPANY_MOTO}</h4>
+          <h4>
+            {COMPANY_ESTABLISH_DATE}
+          </h4>
+        </div>
       </div>
       <hr/>
       <div className="search-container">
