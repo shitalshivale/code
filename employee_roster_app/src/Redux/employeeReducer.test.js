@@ -1,34 +1,85 @@
-import { fetchEmployees, setEmployees, employeeReducer } from './employeeReducer';
+import employeeReducer from './employeeReducer'; 
+import {
+    EMPLOYEE_ACTION_SUCCESS,
+    EMPLOYEE_ACTION_SEARCH
+} from '../constant';
 
-describe('Employee Actions', () => {
-    test('fetchEmployees action', () => {
-        const expectedAction = { type: 'FETCH_EMPLOYEES' };
-        expect(fetchEmployees()).toEqual(expectedAction);
+describe('Employee Reducer', () => {
+    const initialState = {
+        employeeData: null,
+    };
+
+    it('should return the initial state', () => {
+        expect(employeeReducer(undefined, {})).toEqual(initialState);
     });
 
-    test('setEmployees action', () => {
-        const data = [{ id: 1, name: 'John Doe' }];
-        const expectedAction = { type: 'SET_EMPLOYEES', data };
-        expect(setEmployees(data)).toEqual(expectedAction);
+    it('should handle EMPLOYEE_ACTION_SUCCESS', () => {
+        const action = {
+            type: EMPLOYEE_ACTION_SUCCESS,
+            payload: [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Smith' }]
+        };
+        const expectedState = {
+            employeeData: action.payload
+        };
+        expect(employeeReducer(initialState, action)).toEqual(expectedState);
     });
-});
 
-describe('Employee Reducer', () => { 
-    const initialState = { employeeData: null }; 
-    test('should return the initial state', () => { 
-        expect(employeeReducer(undefined, {})).toEqual(initialState); 
-    }); 
-        
-    test('should handle SET_EMPLOYEES', () => { 
-        const data = [{ id: 1, name: 'John Doe' }]; 
-        const action = { type: 'SET_EMPLOYEES', data }; 
-        const expectedState = { employeeData: data }; 
-        expect(employeeReducer(initialState, action)).toEqual(expectedState); 
-    }); 
-    
-    test('should handle FETCH_EMPLOYEES', () => { 
-        const action = { type: 'FETCH_EMPLOYEES', data: [{ id: 1, name: 'Jane Doe' }] };
-        const expectedState = { employeeData: action.data }; 
-        expect(employeeReducer(initialState, action)).toEqual(expectedState); 
-    }); 
+    it('should handle EMPLOYEE_ACTION_SEARCH', () => {
+        const initialStateWithData = {
+            employeeData: [
+                { id: 1, name: 'John Doe' },
+                { id: 2, name: 'Jane Smith' },
+                { id: 3, name: 'Alice Johnson' }
+            ],
+        };
+
+        const action = {
+            type: EMPLOYEE_ACTION_SEARCH,
+            query: 'Jane'
+        };
+
+        const expectedState = {
+            employeeData: [
+                { id: "2", name: 'Jane Smith' }
+            ],
+        };
+
+        expect(employeeReducer(initialStateWithData, action)).toEqual(expectedState);
+    });
+
+    it('should return an empty array when no employees match the search query', () => {
+        const initialStateWithData = {
+            employeeData: [
+                { id: 1, name: 'John Doe' },
+                { id: 2, name: 'Jane Smith' },
+            ],
+        };
+
+        const action = {
+            type: EMPLOYEE_ACTION_SEARCH,
+            query: 'Nonexistent'
+        };
+
+        const expectedState = {
+            employeeData: []
+        };
+
+        expect(employeeReducer(initialStateWithData, action)).toEqual(expectedState);
+    });
+
+    it('should return the same state when the search query is empty', () => {
+        const initialStateWithData = {
+            employeeData: [
+                { id: '1', name: 'John Doe' },
+                { id: '2', name: 'Jane Smith' },
+            ],
+        };
+
+        const action = {
+            type: EMPLOYEE_ACTION_SEARCH,
+            query: ''
+        };
+
+        expect(employeeReducer(initialStateWithData, action)).toEqual({"employeeData": []} );
+    });
 });

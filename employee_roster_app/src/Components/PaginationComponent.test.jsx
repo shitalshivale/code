@@ -1,70 +1,55 @@
+// PaginationComponent.test.js
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import { render, screen, fireEvent } from '@testing-library/react';
 import PaginationComponent from './PaginationComponent';
 
 describe('PaginationComponent', () => {
     const handlePageChange = jest.fn();
 
-    test('renders without crashing', () => {
-        const { getByText } = render(
-            <PaginationComponent
-                currentPage={1}
-                totalPages={5}
-                handlePageChange={handlePageChange}
-            />
-        );
+    test('renders correctly with given props', () => {
+        render(<PaginationComponent currentPage={1} totalPages={5} handlePageChange={handlePageChange} />);
 
-        expect(getByText('Page 1 / 5')).toBeInTheDocument();
+        // Check if the current page and total pages are displayed correctly
+        expect(screen.getByText(/Page 1 \/ 5/i)).toBeInTheDocument();
+
+        // Check if the Prev button is disabled
+        expect(screen.getByRole('button', { name: /prev/i })).toBeDisabled();
+
+        // Check if the Next button is enabled
+        expect(screen.getByRole('button', { name: /next/i })).toBeEnabled();
     });
 
-    test('calls handlePageChange with the previous page number when the "Prev" button is clicked', () => {
-        const { getByText } = render(
-            <PaginationComponent
-                currentPage={2}
-                totalPages={5}
-                handlePageChange={handlePageChange}
-            />
-        );
+    test('handles page change when Next button is clicked', () => {
+        render(<PaginationComponent currentPage={1} totalPages={5} handlePageChange={handlePageChange} />);
 
-        fireEvent.click(getByText('Prev'));
+        // Click the Next button
+        fireEvent.click(screen.getByRole('button', { name: /next/i }));
+
+        // Check if handlePageChange was called with the correct argument
+        expect(handlePageChange).toHaveBeenCalledWith(2);
+    });
+
+    test('handles page change when Prev button is clicked', () => {
+        render(<PaginationComponent currentPage={2} totalPages={5} handlePageChange={handlePageChange} />);
+
+        // Click the Prev button
+        fireEvent.click(screen.getByRole('button', { name: /prev/i }));
+
+        // Check if handlePageChange was called with the correct argument
         expect(handlePageChange).toHaveBeenCalledWith(1);
     });
 
-    test('calls handlePageChange with the next page number when the "Next" button is clicked', () => {
-        const { getByText } = render(
-            <PaginationComponent
-                currentPage={2}
-                totalPages={5}
-                handlePageChange={handlePageChange}
-            />
-        );
+    test('disables Next button on the last page', () => {
+        render(<PaginationComponent currentPage={5} totalPages={5} handlePageChange={handlePageChange} />);
 
-        fireEvent.click(getByText('Next'));
-        expect(handlePageChange).toHaveBeenCalledWith(3);
+        // Check if the Next button is disabled
+        expect(screen.getByRole('button', { name: /next/i })).toBeDisabled();
     });
 
-    test('disables the "Prev" button on the first page', () => {
-        const { getByText } = render(
-            <PaginationComponent
-                currentPage={1}
-                totalPages={5}
-                handlePageChange={handlePageChange}
-            />
-        );
+    test('disables Prev button on the first page', () => {
+        render(<PaginationComponent currentPage={1} totalPages={5} handlePageChange={handlePageChange} />);
 
-        expect(getByText('Prev')).toBeDisabled();
-    });
-
-    test('disables the "Next" button on the last page', () => {
-        const { getByText } = render(
-            <PaginationComponent
-                currentPage={5}
-                totalPages={5}
-                handlePageChange={handlePageChange}
-            />
-        );
-
-        expect(getByText('Next')).toBeDisabled();
+        // Check if the Prev button is disabled
+        expect(screen.getByRole('button', { name: /prev/i })).toBeDisabled();
     });
 });

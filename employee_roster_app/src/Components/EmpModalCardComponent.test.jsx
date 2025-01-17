@@ -1,39 +1,61 @@
-import React from "react";
-import { shallow } from "enzyme";
-import EmployeeModal from "./EmpModalCardComponent";
+// EmpModalCardComponent.test.js
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import EmpModalCardComponent from './EmpModalCardComponent';
 
-describe("EmployeeModal", () => {
-  it("renders employee details correctly", () => {
+describe('EmpModalCardComponent', () => {
     const employee = {
-      empName: "Deepti",
-      jobTitle: "Analyst",
-      jobDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      empAge: 30,
-      dateOfJoining: "2023-10-23",
+        empName: "Deepti",
+        empLastName: "Sharma",
+        empAge: 49,
+        jobTitle: "Analyst",
+        dateOfJoining: "2023-10-23",
+        jobDescription: "Lorem ipsum dolor sit amet.",
+        empPhoto: "/profile_dummy_img.jpg"
     };
 
-    const wrapper = shallow(<EmployeeModal employee={employee} onClose={() => {}} />);
-    expect(wrapper.find("h2").text()).toEqual("John Doe");
-    expect(wrapper.find("p").at(0).text()).toEqual("Job Title: Software Engineer");
-    expect(wrapper.find("p").at(1).text()).toEqual("Job Description: Developing awesome software");
-    expect(wrapper.find("p").at(2).text()).toEqual("Age: 30");
-    expect(wrapper.find("p").at(3).text()).toEqual("Date of Joining: 2023-01-01");
+    const onClose = jest.fn();
+
+    test('renders modal with employee information', () => {
+      render(<EmpModalCardComponent employee={employee} onClose={onClose} isOpen={true} />);
+
+      // Check if employee name is rendered
+      expect(screen.getByText(/Deepti Sharma/i)).toBeInTheDocument();
+      // Check if job title is rendered
+      expect(screen.getByText(/Job Title: Analyst/i)).toBeInTheDocument();
+      // Check if age is rendered
+      expect(screen.getByText(/Age: 49/i)).toBeInTheDocument();
+      // Check if date of joining is rendered
+      expect(screen.getByText(/Date of Joining: 2023-10-23/i)).toBeInTheDocument();
+      // Check if job description is rendered
+      expect(screen.getByText(/Job Description: Lorem ipsum dolor sit amet./i)).toBeInTheDocument();
+      // Check if the image is rendered using alt text
+      expect(screen.getByAltText('')).toHaveAttribute('src', '/profile_dummy_img.jpg');
   });
+    test('calls onClose when close icon is clicked', () => {
+        render(<EmpModalCardComponent employee={employee} onClose={onClose} isOpen={true} />);
 
-  it("calls onClose when close icon is clicked", () => {
-    const onCloseMock = jest.fn();
-    const employee = {
-      empName: "John Doe",
-      jobTitle: "Software Engineer",
-      jobDescription: "Developing awesome software",
-      empAge: 30,
-      dateOfJoining: "2023-01-01",
-    };
+        // Click the close icon
+        fireEvent.click(screen.getByText('+'));
 
-    const wrapper = shallow(<EmployeeModal employee={employee} onClose={onCloseMock} />);
+        // Check if onClose was called
+        expect(onClose).toHaveBeenCalledTimes(1);
+    });
 
-    wrapper.find(".close-icon").simulate("click");
+    test('does not render when isOpen is false', () => {
+        const { container } = render(<EmpModalCardComponent employee={employee} onClose={onClose} isOpen={false} />);
+        
+        // Check if the modal is not rendered
+        expect(container).toBeEmptyDOMElement();
+    });
 
-    expect(onCloseMock).toHaveBeenCalledTimes(1);
-  });
+    test('calls onClose when clicking outside the modal', () => {
+        render(<EmpModalCardComponent employee={employee} onClose={onClose} isOpen={true} />);
+
+        // Click outside the modal
+        fireEvent.mouseDown(document);
+
+        // Check if onClose was called
+        expect(onClose).toHaveBeenCalledTimes(1);
+    });
 });

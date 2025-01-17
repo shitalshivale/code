@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Employee table Component matches snapshot 1`] = `
+<DocumentFragment>
+  <table
+    class="rosterTable"
+  >
+    <thead>
+      <tr>
+        <th>
+          ID
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Contact No
+        </th>
+        <th>
+          Address
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          1
+        </td>
+        <td>
+          <img
+            alt=""
+            height="30"
+            src="./profile_dummy_img.jpg"
+            width="30"
+          />
+          Deepti
+        </td>
+        <td>
+          9748117933
+        </td>
+        <td>
+          56 Sec 27
+        </td>
+      </tr>
+      <tr>
+        <td>
+          2
+        </td>
+        <td>
+          <img
+            alt=""
+            height="30"
+            src="./profile_dummy_img.jpg"
+            width="30"
+          />
+          Kanika
+        </td>
+        <td>
+          6260859447
+        </td>
+        <td>
+          10 Sec 2
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</DocumentFragment>
+`;
