@@ -10,6 +10,8 @@ import {fetchEmployeePending,searchEmployee} from './Redux/employeeAction';
 function App() {
   const dispatch = useDispatch();
   const employeeData = useSelector((state) => state.employeeData);
+  const loading = useSelector((state)=>state.employeeData?.loading || false);
+  const error = useSelector((state)=> state.employeeData?.error || null);
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -69,6 +71,8 @@ function App() {
         />
         <button onClick={handleSearch}>Search</button>
       </div>
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: {error}</p>}
       <EmployeeTableComponent employees={employeeData} currentPage={currentPage} employeesPerPage={employeesPerPage} openModal={openModal} />
       <Pagination currentPage={currentPage} totalPages={totalPages} handlePageChange={handlePageChange} />
       {isModalOpen && (
