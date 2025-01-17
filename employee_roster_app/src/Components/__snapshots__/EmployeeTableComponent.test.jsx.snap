@@ -8,16 +8,16 @@ exports[`Employee table Component matches snapshot 1`] = `
     <thead>
       <tr>
         <th>
-          ID
+          ID ↑
         </th>
         <th>
-          Name
+          Name 
         </th>
         <th>
-          Contact No
+          Contact No 
         </th>
         <th>
-          Address
+          Address 
         </th>
       </tr>
     </thead>

@@ -1,13 +1,38 @@
-import React from "react";
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import React,{useState} from "react";
 
 const EmployeeTableComponent = ({ employees, currentPage, employeesPerPage, openModal }) => {
+  const [sortConfig, setSortConficg] = useState( {key: 'id', direction: 'ascending'})
 
   const startIndex = (currentPage - 1) * employeesPerPage;
   const endIndex = startIndex + employeesPerPage;
 
   const paginatedEmployees = employees && employees.slice(startIndex, endIndex);
+
+  const sortedEmployees = React.useMemo(()=>{
+    if(paginatedEmployees && paginatedEmployees.length > 0){
+      let sortableEmployees = [...paginatedEmployees];
+      if(sortConfig !== null) {
+        sortableEmployees.sort((a,b)=>{
+          if (a[sortConfig.key] < b[sortConfig.key]){
+            return sortConfig.direction === 'ascending' ? -1: 1;
+          }
+          if (a[sortConfig.key] > b[sortConfig.key]){
+            return sortConfig.direction === 'ascending' ? 1: -1;
+          }
+          return 0;
+        })
+      }
+      return sortableEmployees;
+    }
+  },[paginatedEmployees,sortConfig]);
   
+  const handleSort = (key) =>{
+    let direction = 'ascending';
+    if(sortConfig.key === key && sortConfig.direction === 'ascending'){
+        direction= 'descending';
+    }
+    setSortConficg({key, direction})
+  }
   if (!paginatedEmployees) {
     return null; 
   }
@@ -18,14 +43,22 @@ const EmployeeTableComponent = ({ employees, currentPage, employeesPerPage, open
       <table className="rosterTable">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Contact No</th>
-            <th>Address</th>
+            <th onClick={()=> handleSort('id')}>
+                ID {sortConfig.key === 'id' ? (sortConfig.direction === 'ascending' ? '↑' : '↓'):''}
+              </th>
+            <th onClick={()=> handleSort('empName')}>
+              Name {sortConfig.key === 'empName' ? (sortConfig.direction === 'ascending' ? '↑' : '↓'):''}
+              </th>
+            <th onClick={()=> handleSort('contactNo')}>
+              Contact No {sortConfig.key === 'contactNo' ? (sortConfig.direction === 'ascending' ? '↑' : '↓'):''}
+              </th>
+            <th onClick={()=> handleSort('address')}>
+              Address {sortConfig.key === 'address' ? (sortConfig.direction === 'ascending' ? '↑' : '↓'):''}
+            </th>
           </tr>
         </thead>
         <tbody>
-          {paginatedEmployees && paginatedEmployees.map((employee) => {
+          {sortedEmployees.length > 0 && sortedEmployees.map((employee) => {
             return (
               <tr key={employee.id} onClick={() => openModal(employee)}>
                 <td>{employee.id}</td>
@@ -44,38 +77,6 @@ const EmployeeTableComponent = ({ employees, currentPage, employeesPerPage, open
           })}
         </tbody>
       </table>
-      {/* <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>ID</TableCell>
-                <TableCell>Name</TableCell>
-                <TableCell>Contact No</TableCell>
-                <TableCell>Address</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {paginatedEmployees && paginatedEmployees.map((employee) => {
-                return (
-                  <TableRow key={employee.id} onClick={() => openModal(employee)}>
-                    <TableCell>{employee.id}</TableCell>
-                    <TableCell>{employee.name}
-                      <img
-                        src={"/" + employee.empPhoto}
-                        alt=''
-                        height="30"
-                        width="30" />
-                      {employee.empName}
-                    </TableCell>
-                    <TableCell>{employee.contactNo}</TableCell>
-                    <TableCell>{employee.address}</TableCell>
-                  </TableRow>
-                );
-              }
-              )}
-            </TableBody>
-          </Table>
-      </TableContainer> */}
     </>
   );
 };
