@@ -1,4 +1,5 @@
 import React,{useState} from "react";
+import { NO_RECORD_FOUND } from "../constant";
 
 const EmployeeTableComponent = ({ employees, currentPage, employeesPerPage, openModal }) => {
   const [sortConfig, setSortConficg] = useState( {key: 'id', direction: 'ascending'})
@@ -76,7 +77,7 @@ const EmployeeTableComponent = ({ employees, currentPage, employeesPerPage, open
             );
           }):(
             <>
-              <span> No Record found</span>
+              <span> {NO_RECORD_FOUND}</span>
             </>
           )}
         </tbody>
