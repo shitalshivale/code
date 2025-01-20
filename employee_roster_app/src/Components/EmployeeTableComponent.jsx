@@ -77,7 +77,11 @@ const EmployeeTableComponent = ({ employees, currentPage, employeesPerPage, open
             );
           }):(
             <>
-              <span> {NO_RECORD_FOUND}</span>
+              <tr> 
+                <td colSpan={4}>
+                  {NO_RECORD_FOUND}
+                </td>
+              </tr>
             </>
           )}
         </tbody>
