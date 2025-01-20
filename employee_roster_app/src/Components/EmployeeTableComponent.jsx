@@ -58,7 +58,7 @@ const EmployeeTableComponent = ({ employees, currentPage, employeesPerPage, open
           </tr>
         </thead>
         <tbody>
-          {sortedEmployees.length > 0 && sortedEmployees.map((employee) => {
+          {sortedEmployees && sortedEmployees.length > 0 ? sortedEmployees.map((employee) => {
             return (
               <tr key={employee.id} onClick={() => openModal(employee)}>
                 <td>{employee.id}</td>
@@ -74,7 +74,11 @@ const EmployeeTableComponent = ({ employees, currentPage, employeesPerPage, open
                 <td>{employee.address}</td>
               </tr>
             );
-          })}
+          }):(
+            <>
+              <span> No Record found</span>
+            </>
+          )}
         </tbody>
       </table>
     </>
